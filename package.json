@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build-force",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npx gh-pages-clean && npx gh-pages -d dist -r https://github.com/threefoldtech/tfchain-explorer.git"
   },
   "homepage": "https://threefoldtech.github.io/tfchain-explorer",
   "dependencies": {

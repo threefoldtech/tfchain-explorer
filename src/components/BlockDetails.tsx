@@ -173,6 +173,68 @@ const BlockDetails: React.FC<BlockDetailsProps> = ({ blockHashOrNumber }) => {
           </AccordionItem>
         ))}
       </Accordion>
+
+      <Divider my={6} />
+
+      <Text fontSize="lg" fontWeight="bold" mb={4}>
+        Events ({block.events ? block.events.length : 0})
+      </Text>
+
+      <Accordion allowMultiple>
+        {block.events && block.events.map((event, index) => (
+          <AccordionItem key={`${event.section}-${event.method}-${index}`}>
+            <h2>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  <Flex alignItems="center">
+                    <Text mr={2}>#{index}</Text>
+                    <Text fontWeight="medium" mr={2}>
+                      {event.section}.{event.method}
+                    </Text>
+                    <Badge colorScheme="blue" ml={2}>
+                      {event.phase}
+                    </Badge>
+                  </Flex>
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel pb={4}>
+              <Text fontWeight="medium" mb={2}>Data:</Text>
+              <Box 
+                p={3} 
+                borderWidth="1px" 
+                borderRadius="md" 
+                bg="gray.50" 
+                fontFamily="monospace"
+                fontSize="sm"
+                overflowX="auto"
+              >
+                <pre>{JSON.stringify(event.data, null, 2)}</pre>
+              </Box>
+              
+              {event.topics && event.topics.length > 0 && (
+                <>
+                  <Text fontWeight="medium" mt={4} mb={2}>Topics:</Text>
+                  <Box 
+                    p={3} 
+                    borderWidth="1px" 
+                    borderRadius="md" 
+                    bg="gray.50" 
+                    fontFamily="monospace"
+                    fontSize="sm"
+                    overflowX="auto"
+                  >
+                    {event.topics.map((topic, i) => (
+                      <Text key={i}>{topic}</Text>
+                    ))}
+                  </Box>
+                </>
+              )}
+            </AccordionPanel>
+          </AccordionItem>
+        ))}
+      </Accordion>
     </Box>
   );
 };
