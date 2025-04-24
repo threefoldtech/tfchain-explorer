@@ -20,7 +20,7 @@ export const useAccount = (api: ApiPromise | null, address: string | null) => {
         setLoading(true);
         
         // Subscribe to account info changes
-        unsubscribe = await api.query.system.account(address, (accountInfo) => {
+        unsubscribe = await api.query.system.account(address, (accountInfo: any) => {
           const { data: balance, nonce } = accountInfo;
           
           const accountData: AccountData = {

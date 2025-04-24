@@ -29,7 +29,7 @@ export const getApi = (): ApiPromise | null => {
 };
 
 // Custom hook for using the Substrate API
-export const useSubstrateApi = (endpoint: string = SUBSTRATE_ENDPOINTS.polkadot) => {
+export const useSubstrateApi = (endpoint: string = SUBSTRATE_ENDPOINTS.tfchain_dev) => {
   const [api, setApi] = useState<ApiPromise | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [error, setError] = useState<Error | null>(null);

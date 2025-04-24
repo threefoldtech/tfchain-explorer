@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// React is implicitly imported with JSX
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { ChakraProvider, Box } from '@chakra-ui/react';
 import { ApiProvider } from './api/ApiContext';
 import { initFormatBalance } from './utils/format';
